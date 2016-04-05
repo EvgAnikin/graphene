@@ -1,0 +1,78 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[english, russian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A, T1]{fontenc}
+\usepackage{graphicx}
+
+\title{Краевые состояния в модели Кейна--Меле}
+\author{Евгений Аникин}
+
+\begin{document}
+	\maketitle
+	В предыдущем листке была получена формула для энергии в зависимости от квазиимпульса:
+	\begin{multline}
+		\epsilon_p^2 = \left(4t_2\sin{\frac{\sqrt{3}p_ya}{2}} \cos{\frac{3p_xa}{2}} - 
+				4t_2\sin{\frac{\sqrt{3}p_ya}{2}} \cos{\frac{\sqrt{3}p_ya}{2}} +
+				\frac{t^2}{2t_2} \cot{\frac{\sqrt{3}p_ya}{2}}\right)^2\\
+				- \frac{t^4}{4t_2^2}\cot^2{\frac{\sqrt{3}p_ya}{2}}
+				+ t^2\left(1 + 8\cos^2{\frac{\sqrt{3}p_ya}{2}}\right) = \\
+				= \left(a\cos{\frac{3p_xa}{2}} + b\right)^2 + c
+	\end{multline}
+	Матрица гамильтониана --- 
+	\begin{equation}
+		\left(
+		\begin{matrix}
+			\xi && \eta e^{i\phi} \\
+			\eta e^{-i\phi} && -\xi
+		\end{matrix}
+		\right),
+	\end{equation}
+	\begin{equation}
+		\xi = 2t_2 (\sin{px} - \sin{py} - \sin{p(x-y)}) 
+	\end{equation}
+	\begin{equation}
+		\eta e^{i\phi} = t(1 + e^{-ipy} + e^{ip(x-y)}) 
+	\end{equation}
+	Это значит, что функции Грина в импульсном представлении ---
+	\begin{equation}
+		G^R_0(\omega,A,A, \vec{p}) = \frac{\omega + \xi}{\omega^2 - \epsilon_p^2 + i\delta}
+	\end{equation}
+	\begin{equation}
+		G^R_0(\omega,B,B, \vec{p}) = \frac{\omega - \xi}{\omega^2 - \epsilon_p^2 + i\delta}
+	\end{equation}
+	\begin{equation}
+		G^R_0(\omega,A,B, \vec{p}) = \frac{\eta e^{-i\phi}}{\omega^2 - \epsilon_p^2 + i\delta}
+	\end{equation}
+	\begin{equation}
+		G^R_0(\omega,B,A, \vec{p}) = G^R_0(\omega,A,B, -\vec{p})
+	\end{equation}
+	Теперь перейдём к рассмотрению границы цепочки. Пусть граница идёт вдоль вектора $\vec{y}$.
+	Тогда уравнение Дайсона распадётся на независиме уравнения на функции $G(m,m',p_y)$. Границу
+	можно реализовать, введя бесконечные добавки к энергии для атомов обоих типов вдоль
+	одной линии.
+	\begin{multline}
+		G^R(m,s,m',s',p_y) = G^R_0(m,s,m',s'p_y)  \\
+			+\Delta E G^R_0(m,s,0,A,p_y)G^R(0,A,m',s',p_y)  \\
+						+\Delta E G^R_0(m,s,0,B,p_y)G^R(0,B,m',s',p_y) 
+	\end{multline}
+	Для бесконечного $\Delta E$ уравнение на связанные состояния ---
+	\begin{equation}
+		\operatorname{det} 
+		\left(\begin{matrix}
+			G^R_0(0,A,0,A,p_y) & G^R_0(0,A,0,B,p_y) \\
+			G^R_0(0,B,0,A,p_y) & G^R_0(0,B,0,B,p_y) 
+		\end{matrix}\right) = 0
+	\end{equation}
+	Таким образом, остаётся вычислить функции Грина, входящие в детеримнант. Вычисляются они 
+	по таким формулам:
+	\begin{equation}
+		G_0^R(m,s,m',s',p_y) = 
+			\nu_x\int \frac{dp_x}{2\pi} e^{i\vec{p}\vec{x}(m-m')} G^0_R(s,s',p_x,p_y)
+	\end{equation}
+	Этот интеграл равен сумме по полюсам в верхней полуплоскости, которые определяются уравнением
+	\begin{equation}
+		\omega^2 = (a\cos{k} + b)^2 + c
+	\end{equation}
+\end{document}
